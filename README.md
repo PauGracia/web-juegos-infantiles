@@ -60,8 +60,6 @@ cd web-juegos-infantiles
 <img width="600" height="282" alt="image" src="https://github.com/user-attachments/assets/f6d19107-5f66-4ca8-b908-0dba199dba66" />
 
 
----
-
 
 ## ⚙️ Configuración especial  
 
