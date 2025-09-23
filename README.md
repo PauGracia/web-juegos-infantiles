@@ -49,9 +49,10 @@ Actualmente incluye:
 
 Clona el repositorio usando **SSH**:  
 
-```bash
+
 git clone git@github.com:PauGracia/web-juegos-infantiles.git
 cd web-juegos-infantiles
+
 
 ---
 
