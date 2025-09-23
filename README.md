@@ -58,7 +58,7 @@ cd web-juegos-infantiles
 
 ## 📂 Estructura de carpetas
 
-
+'''
 web-juegos-infantiles/
 │
 ├─ backend/ # Archivos PHP y datos
@@ -70,7 +70,7 @@ web-juegos-infantiles/
 ├─ operaciones.html # Juego Operaciones
 ├─ palabras.html # Juego de palabras
 └─ README.md # Documentación
-
+'''
 ---
 
 
