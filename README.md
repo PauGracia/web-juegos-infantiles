@@ -52,3 +52,37 @@ Clona el repositorio usando **SSH**:
 ```bash
 git clone git@github.com:PauGracia/web-juegos-infantiles.git
 cd web-juegos-infantiles
+
+---
+
+## 📂 Estructura de carpetas  
+
+<img width="600" height="282" alt="image" src="https://github.com/user-attachments/assets/f6d19107-5f66-4ca8-b908-0dba199dba66" />
+
+
+---
+
+
+## ⚙️ Configuración especial  
+
+- **Compatibilidad Windows/Linux** → `core.autocrlf=input` en Git para evitar problemas de fin de línea.  
+- **SSH en GitHub** → conexión remota con clave SSH para evitar errores 403.  
+- **Operaciones** → en nivel avanzado (nivel 2) se deshabilita el input del máximo operando.  
+- **Palabras** → el juego congela la palabra a adivinar, validando letra a letra con feedback en tiempo real.  
+
+---
+
+## 🔮 Mejoras futuras  
+
+- Sonido y animaciones para feedback positivo/negativo.  
+- Guardado de progreso de usuarios entre sesiones.  
+- Inclusión de más idiomas y palabras para el juego de vocabulario.  
+- Optimización de backend para ranking global multiusuario.  
+
+---
+
+## 📜 Licencia  
+
+Proyecto personal desarrollado con fines **educativos** y de **demostración** para currículum y portfolio.  
+
+
