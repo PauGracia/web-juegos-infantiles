@@ -58,20 +58,20 @@ cd web-juegos-infantiles
 
 ## 📂 Estructura de carpetas
 
----
+```
 web-juegos-infantiles/
 │
-├─ backend/ # Archivos PHP y datos
-│ └─ data/memori.txt
-├─ css/ # Estilos
-├─ js/ # Scripts JS (todos los juegos en un solo archivo)
-├─ index.html # Página principal
-├─ memoria.html # Juego Memori
+├─ backend/         # Archivos PHP y datos
+│  └─ data/memori.txt
+├─ css/             # Estilos
+├─ js/              # Scripts JS (todos los juegos en un solo archivo)
+├─ index.html       # Página principal
+├─ memoria.html     # Juego Memori
 ├─ operaciones.html # Juego Operaciones
-├─ palabras.html # Juego de palabras
-└─ README.md # Documentación
+├─ palabras.html    # Juego de palabras
+└─ README.md        # Documentación
+```
 
----
 
 
 ## ⚙️ Configuración especial  
