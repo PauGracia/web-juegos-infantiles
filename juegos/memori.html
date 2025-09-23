@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Juego de Memoria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body id="body-memori">
+    <img
+      src="../assets/img/imagenes/pizarra.jpg"
+      class="fondo-palabras"
+      alt=""
+    />
+    <div class="header">
+      <h1 id="titulo-memori">Juego de Memoria</h1>
+      <div id="marcador">0</div>
+    </div>
+
+    <div class="tablero" id="tablero"></div>
+    <div id="ranking"></div>
+    <button id="salir-juego" class="salir-btn">Salir</button>
+
+    <!-- Modal Victoria -->
+    <div id="modal-memori" class="modal-memori">
+      <div class="modal-contentMemori">
+        <h2>¡Enhorabuena!</h2>
+        <p id="puntuacionFinal"></p>
+        <p>¿Quieres guardar tu record?</p>
+
+        <!-- Botón guardar arriba -->
+        <button id="guardar" class="guardar-btn">Guardar</button>
+
+        <div id="registro" style="display: none; margin-top: 10px">
+          <input type="text" id="nombreJugador" placeholder="Tu nombre" />
+          <button id="registrar" class="registrar-btn">Registrar</button>
+        </div>
+
+        <!-- Botones principales abajo -->
+        <div class="botones">
+          <button id="salir" class="salir-btn">Salir</button>
+          <button id="reiniciar" class="reiniciar-btn">Reiniciar</button>
+          <button id="Ranking" class="ranking-btn">Ranking</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/js/elementos.js"></script>
+    <script src="../assets/js/juegos.js"></script>
+  </body>
+</html>

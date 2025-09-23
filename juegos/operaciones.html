@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operaciones</title>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+  <body class="body-operaciones">
+    <img
+      src="../assets/img/imagenes/pizarra.jpg"
+      class="fondo-palabras"
+      alt=""
+    />
+    <!-- Modal -->
+    <div class="modal-operaciones" id="modal-operaciones">
+      <div class="modal-content">
+        <h2>Configuración de Operaciones</h2>
+
+        <label for="nivel">Nivel de dificultad:</label><br />
+        <select id="nivel">
+          <option value="1">Nivel 1 (fácil)</option>
+          <option value="2">Nivel 2 (avanzado)</option></select
+        ><br /><br />
+
+        <input
+          type="number"
+          id="input-operaciones"
+          placeholder="Número de operaciones (max 50)"
+          min="1"
+          max="50"
+        /><br />
+
+        <input
+          type="number"
+          id="input-maximo"
+          placeholder="Número Operador (solo nivel 1)"
+          min="0"
+          max="1000"
+        /><br />
+
+        <button onclick="iniciar()">Iniciar</button>
+      </div>
+    </div>
+
+    <h1 class="titulo-operaciones">Operaciones</h1>
+
+    <div class="operaciones-pizarra" id="pizarra"></div>
+
+    <div class="botones-operaciones">
+      <button onclick="comprobarRespuestas()">Comprobar</button>
+      <button onclick="location.reload()">Reiniciar</button>
+    </div>
+
+    <div id="boton-salir-operaciones">
+      <button onclick="window.location.href='index.html'">Salir</button>
+    </div>
+
+    <script src="../assets/js/juegos.js"></script>
+  </body>
+</html>
