@@ -55,7 +55,8 @@ cd web-juegos-infantiles
 
 ---
 
-## 📂 Estructura de carpetas  
+## 📂 Estructura de carpetas
+
 
 web-juegos-infantiles/
 │
