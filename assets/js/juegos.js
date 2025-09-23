@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Modal botones
 
-    /*function actualizarBotonGuardar() {
+    function actualizarBotonGuardar() {
       if (puntuacion <= 0) {
         guardarBtn.disabled = true;
         guardarBtn.textContent = "0 puntos no se pueden guardar";
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function actualizarMarcador() {
       marcador.textContent = puntuacion;
       actualizarBotonGuardar();
-    }*/
+    }
 
     // Llamada inicial al cargar la página
     actualizarMarcador();

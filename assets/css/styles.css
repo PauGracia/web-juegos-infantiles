@@ -237,7 +237,7 @@ body {
 
 /* Modal */
 .modal-memori {
-  display: flex; /* No aparece inicialmente */
+  display: none; /* No aparece inicialmente */
   position: fixed;
   z-index: 1000;
   inset: 0;
