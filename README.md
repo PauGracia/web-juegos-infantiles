@@ -1,114 +1,99 @@
-Web Juegos Infantiles
+# 🌐 Web Juegos Infantiles  
 
-Repositorio: web-juegos-infantiles
-Autor: Pau Gracia
+**Repositorio:** `web-juegos-infantiles`  
+**Autor:** Pau Gracia  
 
-(opcional: añade captura de pantalla de la app)
+*(Opcional: añade aquí una captura de pantalla de la app)*  
 
-Descripción
+---
 
-Web Juegos Infantiles es una colección de juegos educativos web desarrollada con HTML, CSS y JavaScript puro. Está orientada a niños y niñas para aprender matemáticas y vocabulario de manera interactiva y divertida.
+## 📖 Descripción  
 
-Actualmente incluye:
+**Web Juegos Infantiles** es una colección de juegos educativos web desarrollada con **HTML, CSS y JavaScript puro**.  
+Está orientada a niños y niñas para aprender **matemáticas** y **vocabulario** de manera interactiva y divertida.  
 
-Memori: Juego de memoria visual con imágenes y puntuación.
+Actualmente incluye:  
+- 🧠 **Memori** → Juego de memoria visual con imágenes y puntuación.  
+- ➕ **Operaciones** → Practica operaciones matemáticas (niveles fáciles y avanzados).  
+- 🔤 **Juego de Palabras** → Aprende vocabulario en distintos idiomas con casillas de letras.  
 
-Operaciones: Practica operaciones matemáticas (niveles fáciles y avanzados).
+👉 Funciona en **navegadores modernos** y es compatible con **Windows** y **Linux**.  
+👉 Optimizado para una experiencia fluida en **móvil y escritorio**.  
 
-Juego de Palabras: Aprende vocabulario en distintos idiomas con casillas de letras.
+---
 
-El proyecto está pensado para uso en navegadores modernos y funciona tanto en Windows como Linux. Se ha optimizado la experiencia de usuario y la compatibilidad de teclas y colores.
+## 🛠️ Tecnologías  
 
-Tecnologías
+- **HTML5**  
+- **CSS3** (Flexbox, media queries)  
+- **JavaScript (Vanilla JS)**  
+- **PHP** (backend mínimo para almacenamiento de puntuaciones `guardar.php`)  
+- **Git** (control de versiones, despliegue seguro vía SSH)  
 
-HTML5
+---
 
-CSS3 (Flexbox, media queries)
+## ✨ Características  
 
-JavaScript (Vanilla JS)
+- Modal de configuración para seleccionar nivel, número de operaciones o cantidad de palabras.  
+- Diferentes niveles de dificultad en juegos matemáticos.  
+- Validación en tiempo real de respuestas y feedback visual:  
+  - ✅ Verde = correcto  
+  - ❌ Rojo = incorrecto  
+- **Responsive design** (adaptativo a móviles).  
+- Persistencia de puntuaciones y ranking en memoria backend (`memori.txt`).  
+- Navegación sencilla y segura entre juegos.  
 
-Backend mínimo con PHP para almacenamiento de puntuaciones (guardar.php)
+---
 
-Control de versiones con Git y uso de SSH para despliegue seguro.
+## 🚀 Instalación y uso  
 
-Características
+Clona el repositorio usando **SSH**:  
 
-Modal de configuración para seleccionar nivel, número de operaciones o cantidad de palabras.
-
-Diferentes niveles de dificultad en juegos matemáticos.
-
-Validación en tiempo real de respuestas y feedback visual:
-
-Verde = correcto
-
-Rojo = incorrecto
-
-Adaptativo a dispositivos móviles (responsive design).
-
-Persistencia de puntuaciones y ranking en memoria backend (memori.txt).
-
-Navegación sencilla y segura entre juegos.
-
-Instalación y uso
-
-Clona el repositorio usando SSH:
 
 git clone git@github.com:PauGracia/web-juegos-infantiles.git
-
-
-Entra en la carpeta del proyecto:
-
 cd web-juegos-infantiles
 
 
-Abre index.html en tu navegador favorito.
+---
 
-Para cambios y desarrollo:
+## 📂 Estructura de carpetas
 
-Crea tu rama dev:
-
-git checkout -b dev
-
-
-Realiza cambios, prueba localmente y sube la rama:
-
-git add .
-git commit -m "Descripción de cambios"
-git push -u origin dev
-
-Estructura de carpetas
+```
 web-juegos-infantiles/
 │
-├─ backend/          # Archivos PHP y datos
-│   └─ data/memori.txt
-├─ css/              # Estilos
-├─ js/               # Scripts JS (todos los juegos en un solo archivo)
-├─ index.html        # Página principal
-├─ memoria.html      # Juego Memori
-├─ operaciones.html  # Juego Operaciones
-├─ palabras.html     # Juego de palabras
-└─ README.md         # Documentación
+├─ backend/         # Archivos PHP y datos
+│  └─ data/memori.txt
+├─ css/             # Estilos
+├─ js/              # Scripts JS (todos los juegos en un solo archivo)
+├─ index.html       # Página principal
+├─ memoria.html     # Juego Memori
+├─ operaciones.html # Juego Operaciones
+├─ palabras.html    # Juego de palabras
+└─ README.md        # Documentación
+```
 
-Configuración especial
 
-Compatibilidad Windows/Linux: se ha configurado core.autocrlf=input en Git para evitar problemas de fin de línea.
 
-SSH GitHub: la conexión remota usa clave SSH para evitar errores 403 al hacer push.
+## ⚙️ Configuración especial  
 
-Modal de Operaciones: el input del máximo operando se deshabilita en nivel avanzado (nivel 2).
+- **Compatibilidad Windows/Linux** → `core.autocrlf=input` en Git para evitar problemas de fin de línea.  
+- **SSH en GitHub** → conexión remota con clave SSH para evitar errores 403.  
+- **Operaciones** → en nivel avanzado (nivel 2) se deshabilita el input del máximo operando.  
+- **Palabras** → el juego congela la palabra a adivinar, validando letra a letra con feedback en tiempo real.  
 
-Palabras: el juego congela la palabra a adivinar, validando letra a letra y mostrando feedback en tiempo real.
+---
 
-Mejoras futuras
+## 🔮 Mejoras futuras  
 
-Implementar sonido y animaciones para feedback positivo/negativo.
+- Sonido y animaciones para feedback positivo/negativo.  
+- Guardado de progreso de usuarios entre sesiones.  
+- Inclusión de más idiomas y palabras para el juego de vocabulario.  
+- Optimización de backend para ranking global multiusuario.  
 
-Guardado de progreso de usuarios entre sesiones.
+---
 
-Inclusión de más idiomas y palabras para ampliar el juego de vocabulario.
+## 📜 Licencia  
 
-Optimización de backend para ranking global multiusuario.
+Proyecto personal desarrollado con fines **educativos** y de **demostración** para currículum y portfolio.  
 
-Licencia
 
-Proyecto personal desarrollado con fines educativos y de demostración para curriculum y portfolio.
