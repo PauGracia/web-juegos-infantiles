@@ -99,7 +99,7 @@ Copiar código
         └── ❌ Sin servidor PHP → Accede a GitHub Pages
                               👉 https://paugracia.github.io/web-juegos-infantiles/index.html
 
-
+'''
 
 ## 📂 Estructura de carpetas
 
