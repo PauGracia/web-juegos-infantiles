@@ -464,6 +464,10 @@ body {
 
 /* MÓVIL */
 @media (max-width: 600px) {
+  #body-memori {
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
   .header {
     justify-content: space-between;
   }
