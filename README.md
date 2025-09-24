@@ -55,51 +55,12 @@ Por ello, es necesario **clonar el repositorio** y **levantar un servidor local*
 
 Usando **SSH**:
 
-```bash
+
 git clone git@github.com:PauGracia/web-juegos-infantiles.git
 cd web-juegos-infantiles
 O usando HTTPS:
 
-bash
-Copiar código
-git clone https://github.com/PauGracia/web-juegos-infantiles.git
-cd web-juegos-infantiles
-2️⃣ Levantar un servidor local con PHP
-Con PHP instalado (tanto en Windows, Linux o macOS), simplemente ejecuta:
 
-bash
-Copiar código
-php -S localhost:8000
-Después abre en tu navegador:
-👉 http://localhost:8000
-
-⚠️ Si no levantas un servidor local, la funcionalidad del ranking no funcionará porque depende de PHP.
-
-🔎 Ver el proyecto sin ranking
-Si solo quieres probar el juego sin la funcionalidad de guardar el ranking, puedes acceder a la versión desplegada en GitHub Pages:
-
-👉 https://paugracia.github.io/web-juegos-infantiles/index.html
-
-📊 Esquema de uso
-text
-Copiar código
-🖥️ Clonar repositorio
-        │
-        ▼
-📂 Entrar en carpeta del proyecto
-        │
-        ▼
-⚙️ Levantar servidor local con PHP
-        │
-        ▼
-🌐 Abrir http://localhost:8000
-        │
-        ├── ✅ Con servidor PHP → Juego + Ranking
-        │
-        └── ❌ Sin servidor PHP → Accede a GitHub Pages
-                              👉 https://paugracia.github.io/web-juegos-infantiles/index.html
-
-'''
 
 ## 📂 Estructura de carpetas
 
