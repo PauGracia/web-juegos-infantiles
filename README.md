@@ -102,7 +102,7 @@ También puedes probar el juego sin ranking en GitHub Pages:
 └── ❌ Sin servidor PHP → Acceso a GitHub Pages
 👉 https://paugracia.github.io/web-juegos-infantiles/index.html
 
-´´´
+```
 
 
 ## 📂 Estructura de carpetas
