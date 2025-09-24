@@ -3,7 +3,8 @@
 **Repositorio:** `web-juegos-infantiles`  
 **Autor:** Pau Gracia  
 
-*(Opcional: añade aquí una captura de pantalla de la app)*  
+<img src="img/imagenes/capturaIndex.png" alt="Captura de pantalla de la página principal" width="600">
+  
 
 ---
 
