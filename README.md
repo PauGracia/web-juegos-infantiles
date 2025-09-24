@@ -64,7 +64,7 @@ O usando HTTPS:
 Asegúrate de tener PHP instalado (Windows, Linux o macOS).  
 Luego ejecuta en la terminal:
 
-```bash
+bash
 php -S localhost:8000
 
 ## 3️⃣ Abrir en el navegador
