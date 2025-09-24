@@ -46,16 +46,20 @@ Actualmente incluye:
 
 ---
 
-## 🚀 Instalación y uso  
+## 🚀 Instalación y uso
 
-Clona el repositorio usando **SSH**:  
+Este proyecto utiliza **PHP** para guardar las puntuaciones en el ranking del juego de parejas.  
+Por ello, es necesario **clonar el repositorio** y **levantar un servidor local** para que funcione correctamente.  
 
+### 1️⃣ Clonar el repositorio
 
+Usando **SSH**:
+
+```bash
 git clone git@github.com:PauGracia/web-juegos-infantiles.git
 cd web-juegos-infantiles
 
 
----
 
 ## 📂 Estructura de carpetas
 
