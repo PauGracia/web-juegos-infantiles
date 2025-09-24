@@ -3,7 +3,7 @@
 **Repositorio:** `web-juegos-infantiles`  
 **Autor:** Pau Gracia  
 
-<img src="img/imagenes/capturaIndex.png" alt="Captura de pantalla de la página principal" width="600">
+<img src="assets/img/imagenes/capturaIndex.png" alt="Captura de pantalla de la página principal" width="600">
   
 
 ---
