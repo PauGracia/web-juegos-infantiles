@@ -922,3 +922,25 @@ body {
   cursor: pointer;
   transition: all 0.2s ease;
 }
+
+@media (max-width: 768px) {
+  .imagen-contenedor {
+    border: 18px solid blue;
+
+    padding: 45px;
+
+    max-width: 350px;
+    max-height: 350px;
+  }
+
+  .letras-palabras input {
+    width: 35px;
+    height: 35px;
+    font-size: 20px;
+    margin: 3px;
+  }
+
+  .botones-palabras button {
+    font-size: 14px;
+  }
+}
