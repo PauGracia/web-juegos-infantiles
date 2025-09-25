@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>El Corredor</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: #f2f2f2;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        font-size: 2em;
+        margin-bottom: 20px;
+      }
+      .juego {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 20px;
+        align-items: center;
+      }
+      .escenario {
+        position: relative;
+        height: 300px;
+        border: 2px solid #333;
+        background: #fff;
+        border-radius: 10px;
+      }
+      .muneco {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        background: blue;
+        border-radius: 50%;
+        transition: left 0.5s ease;
+      }
+      .puerta {
+        position: absolute;
+        bottom: 0;
+        right: 10px;
+        width: 60px;
+        height: 120px;
+        background: brown;
+        border: 4px solid #333;
+        border-radius: 5px;
+      }
+      .letras {
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        gap: 5px;
+        margin-bottom: 20px;
+      }
+      .letras button {
+        padding: 10px;
+        font-size: 1em;
+        cursor: pointer;
+        border-radius: 6px;
+        border: none;
+        background: #ddd;
+        transition: all 0.2s;
+      }
+      .letras button:disabled {
+        cursor: not-allowed;
+        color: #fff;
+      }
+      .palabra {
+        font-size: 2em;
+        letter-spacing: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>El Corredor</h1>
+    <div class="juego">
+      <div class="escenario">
+        <div class="muneco" id="muneco"></div>
+        <div class="puerta"></div>
+      </div>
+      <div>
+        <div class="letras" id="letras"></div>
+        <div class="palabra" id="palabra"></div>
+      </div>
+    </div>
+    <script src="../assets/js/palabras.js"></script>
+    <script>
+      // Palabras disponibles
+
+      let palabraSecreta =
+        palabras[Math.floor(Math.random() * palabras.length)].toUpperCase();
+      let progreso = Array(palabraSecreta.length).fill("_");
+
+      let pasos = 0; // 6 fallos max
+      const maxPasos = 6;
+
+      const palabraEl = document.getElementById("palabra");
+      const letrasEl = document.getElementById("letras");
+      const muneco = document.getElementById("muneco");
+
+      // Mostrar palabra
+      function mostrarPalabra() {
+        palabraEl.textContent = progreso.join(" ");
+      }
+
+      // Crear botones A-Z
+      function crearBotones() {
+        const abecedario = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split("");
+        abecedario.forEach((letra) => {
+          const btn = document.createElement("button");
+          btn.textContent = letra;
+          btn.onclick = () => manejarLetra(btn, letra);
+          letrasEl.appendChild(btn);
+        });
+      }
+
+      // Manejar click de letra
+      function manejarLetra(btn, letra) {
+        btn.disabled = true;
+        if (palabraSecreta.includes(letra)) {
+          btn.style.background = "green";
+          for (let i = 0; i < palabraSecreta.length; i++) {
+            if (palabraSecreta[i] === letra) {
+              progreso[i] = letra;
+            }
+          }
+          mostrarPalabra();
+          if (!progreso.includes("_")) {
+            setTimeout(() => alert("¡Ganaste!"), 200);
+          }
+        } else {
+          btn.style.background = "red";
+          pasos++;
+          moverMuneco();
+          if (pasos >= maxPasos) {
+            setTimeout(
+              () => alert("Perdiste. La palabra era: " + palabraSecreta),
+              200
+            );
+          }
+        }
+      }
+
+      // Mover muñeco
+      function moverMuneco() {
+        const escenario = document.querySelector(".escenario");
+        const ancho = escenario.clientWidth - 100; // espacio hasta puerta
+        const paso = ancho / maxPasos;
+        muneco.style.left = pasos * paso + "px";
+      }
+
+      // Inicializar
+      mostrarPalabra();
+      crearBotones();
+    </script>
+  </body>
+</html>
