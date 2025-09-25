@@ -11,7 +11,7 @@ body {
   overflow-y: auto;
 }
 
-/* Estilo general */
+/* Estilo general del menu */
 #body-index {
   font-family: Arial;
   text-align: center;
@@ -79,7 +79,7 @@ body {
   transform: scale(1.05);
 }
 
-/* Footer */
+/* Footer del menu */
 footer {
   position: fixed;
   bottom: 0;
@@ -98,7 +98,7 @@ footer a {
   text-decoration: none;
 }
 
-/* Media Queries para tablets */
+/* Media Queries para tablet del menu */
 @media (max-width: 1024px) {
   #title-index {
     font-size: 45px;
@@ -115,7 +115,7 @@ footer a {
   }
 }
 
-/* Media Queries para móviles */
+/* Media Queries para móviles del menu */
 @media (max-width: 768px) {
   #title-index {
     font-size: 35px;
@@ -167,7 +167,7 @@ footer a {
   }
 }
 
-/* -----Memori----- */
+/* ----- Juego de Memori ----- */
 
 html,
 body {
@@ -215,6 +215,7 @@ body {
   justify-content: center;
 }
 
+/*Las cartas */
 .carta {
   width: 80px;
   height: 80px;
@@ -235,7 +236,7 @@ body {
   font-weight: bold;
 }
 
-/* Modal */
+/* Modal del memori */
 .modal-memori {
   display: none; /* No aparece inicialmente */
   position: fixed;
@@ -395,7 +396,7 @@ body {
   border-radius: 8px;
 }
 
-/* Entre 1351px y 1500px */
+/*Media Queries (Entre 1351px y 1500px) del memori */
 @media (min-width: 1351px) and (max-width: 1500px) {
   .carta {
     width: 80px;
@@ -414,7 +415,7 @@ body {
   }
 }
 
-/* TABLET */
+/*Media Queries TABLET del memori */
 @media (max-width: 1350px) {
   body {
     text-align: left;
@@ -462,7 +463,7 @@ body {
   }
 }
 
-/* MÓVIL */
+/*Media Queries MÓVIL del memori*/
 @media (max-width: 600px) {
   #body-memori {
     padding: 0 10px;
@@ -583,7 +584,7 @@ body {
   font-weight: 600;
   color: var(--accent);
 }
-
+/* Media para pagina del ranking */
 @media (max-width: 480px) {
   #lista {
     padding: 12px;
@@ -710,7 +711,7 @@ body {
   background-color: #f7c3c3;
 }
 
-/* Modal */
+/* Modal de juego operaciones */
 .modal-operaciones {
   position: fixed;
   top: 0;
@@ -761,6 +762,7 @@ body {
   transition: all 0.2s ease;
 }
 
+/* Media tablets juego operaciones */
 @media (max-width: 768px) {
   .botones-operaciones button {
     width: 150px;
@@ -778,6 +780,7 @@ body {
   }
 }
 
+/* Media mobil juego operaciones */
 @media (max-width: 480px) {
   .botones-operaciones button {
     width: 120px;
@@ -927,6 +930,7 @@ body {
   transition: all 0.2s ease;
 }
 
+/* Media tablets juego palabras */
 @media (max-width: 768px) {
   .imagen-contenedor {
     border: 18px solid blue;

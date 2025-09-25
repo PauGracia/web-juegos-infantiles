@@ -1,5 +1,5 @@
 <?php
-// guardar.php
+// Scrip que se encarga de registrar en el TXT
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
