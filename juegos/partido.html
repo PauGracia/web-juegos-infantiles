@@ -13,7 +13,7 @@
       }
       .titulo-partido {
         font-size: 7em;
-        margin-bottom: 40px;
+        margin-bottom: 20px;
         margin-top: 10px;
       }
       .juego {
@@ -88,7 +88,6 @@
         cursor: not-allowed;
         color: #fff;
       }
-
       .fondo-palabras {
         position: fixed;
         top: 0;
@@ -99,8 +98,9 @@
         z-index: -1;
       }
 
-      /* -------- Modal -------- */
-      #modal-partido {
+      /* -------- MODALES -------- */
+      #modal-partido,
+      #modal-final {
         position: fixed;
         top: 0;
         left: 0;
@@ -112,22 +112,23 @@
         align-items: center;
         z-index: 10;
       }
-      #modal-contenido {
+      #modal-contenido,
+      #modal-final-contenido {
         background: white;
         padding: 20px;
         border-radius: 10px;
         text-align: center;
         width: 300px;
       }
-      #modal-contenido h2 {
-        margin-bottom: 20px;
-      }
+      #modal-contenido input,
       #modal-contenido select {
         padding: 8px;
         font-size: 1em;
-        margin-bottom: 20px;
+        margin: 10px 0;
+        width: 90%;
       }
-      #modal-contenido button {
+      #modal-contenido button,
+      #modal-final-contenido button {
         padding: 10px 20px;
         font-size: 1em;
         border: none;
@@ -135,6 +136,20 @@
         cursor: pointer;
         background: #28a745;
         color: white;
+        margin: 5px;
+      }
+
+      /* -------- MARCADOR -------- */
+      #marcador {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        background: #333;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 1.8em;
+        font-weight: bold;
       }
     </style>
   </head>
@@ -144,12 +159,16 @@
       class="fondo-palabras"
       alt=""
     />
-    <h1 class="titulo-partido">El Corredor</h1>
+    <h1 class="titulo-partido">El Partido</h1>
 
-    <!-- Modal de dificultad -->
+    <!-- MARCADOR -->
+    <div id="marcador">0</div>
+
+    <!-- Modal inicial -->
     <div id="modal-partido">
       <div id="modal-contenido">
-        <h2>Elige dificultad</h2>
+        <h2>Inicia tu juego</h2>
+        <input type="text" id="usuario" placeholder="Nombre de usuario" />
         <select id="nivel">
           <option value="facil">Fácil (11 fallos)</option>
           <option value="medio">Medio (7 fallos)</option>
@@ -157,6 +176,31 @@
         </select>
         <br />
         <button onclick="iniciarJuego()">Empezar</button>
+        <button
+          onclick="location.href='../backend/paginaRankingPalabras.php'"
+          style="background: #007bff"
+        >
+          Ver Ranking
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal final -->
+    <div id="modal-final" style="display: none">
+      <div id="modal-final-contenido">
+        <h2>Fin del juego</h2>
+        <p id="resultado"></p>
+        <button onclick="reiniciarCompleto()">Volver a jugar</button>
+        <button onclick="location.reload()">Salir</button>
+        <form
+          method="POST"
+          action="../backend/rankingPalabras.php"
+          style="margin-top: 10px"
+        >
+          <input type="hidden" id="usuarioFinal" name="usuario" />
+          <input type="hidden" id="puntosFinal" name="puntos" />
+          <button type="submit">Registrar récord</button>
+        </form>
       </div>
     </div>
 
@@ -181,28 +225,41 @@
       let progreso;
       let pasos = 0;
       let maxPasos;
+      let usuario = "";
+      let puntos = 0;
+
       const palabraEl = document.getElementById("palabra");
       const letrasEl = document.getElementById("letras");
       const muneco = document.getElementById("muneco");
       const puerta = document.getElementById("puerta");
+      const marcador = document.getElementById("marcador");
 
       function iniciarJuego() {
+        usuario = document.getElementById("usuario").value.trim();
+        if (!usuario) {
+          alert("Por favor ingresa un nombre de usuario");
+          return;
+        }
+
         const nivel = document.getElementById("nivel").value;
         if (nivel === "facil") maxPasos = 11;
         if (nivel === "medio") maxPasos = 7;
         if (nivel === "dificil") maxPasos = 4;
 
-        // Cerrar modal
         document.getElementById("modal-partido").style.display = "none";
 
-        // Reiniciar variables
+        puntos = 0;
+        actualizarMarcador();
+        nuevaPalabra();
+      }
+
+      function nuevaPalabra() {
         palabraSecreta =
           palabras[Math.floor(Math.random() * palabras.length)].toUpperCase();
         progreso = Array(palabraSecreta.length).fill("_");
         pasos = 0;
         muneco.style.left = "0px";
         letrasEl.innerHTML = "";
-
         mostrarPalabra();
         crearBotones();
       }
@@ -232,7 +289,9 @@
           }
           mostrarPalabra();
           if (!progreso.includes("_")) {
-            setTimeout(() => alert("¡Ganaste!"), 200);
+            puntos++;
+            actualizarMarcador();
+            setTimeout(() => nuevaPalabra(), 500);
           }
         } else {
           btn.style.background = "red";
@@ -241,32 +300,36 @@
         }
       }
 
-      // Se encarga del movimiento del balon
       function moverMuneco() {
         const escenario = document.querySelector(".escenario");
         const escenarioRect = escenario.getBoundingClientRect();
         const puertaRect = puerta.getBoundingClientRect();
-
-        // Coordenada X del centro de la portería relativo al escenario
         const centroPuerta =
           puertaRect.left - escenarioRect.left + puertaRect.width / 2;
-
-        // Posición final donde debe quedar la pelota en caso de perder
         const destinoFinal = centroPuerta - muneco.clientWidth / 2;
-
-        // Distancia que avanza en cada fallo
         const paso = destinoFinal / maxPasos;
-
-        // Mover pelota progresivamente
         muneco.style.left = pasos * paso + "px";
 
-        // Detectar derrota
         if (pasos >= maxPasos) {
-          setTimeout(
-            () => alert("Perdiste. La palabra era: " + palabraSecreta),
-            300
-          );
+          setTimeout(() => mostrarFinal(), 300);
         }
+      }
+
+      function actualizarMarcador() {
+        marcador.textContent = puntos;
+      }
+
+      function mostrarFinal() {
+        document.getElementById("modal-final").style.display = "flex";
+        document.getElementById("resultado").textContent =
+          usuario + ", tu puntuación fue: " + puntos;
+        document.getElementById("usuarioFinal").value = usuario;
+        document.getElementById("puntosFinal").value = puntos;
+      }
+
+      function reiniciarCompleto() {
+        document.getElementById("modal-final").style.display = "none";
+        document.getElementById("modal-partido").style.display = "flex";
       }
     </script>
   </body>
