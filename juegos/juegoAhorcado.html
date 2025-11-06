@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>El Ahorcado</title>
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+  </head>
+
+  <body class="body-ahorcado">
+    <h1 class="titulo-ahorcado">El Ahorcado</h1>
+    <div id="marcador-ahorcado">0</div>
+
+    <!-- Modal de inicio -->
+    <div id="modal-inicio">
+      <div id="modal-contenido">
+        <h2>Inicia tu juego</h2>
+        <input type="text" id="usuario" placeholder="Nombre de usuario" />
+        <br />
+        <button onclick="iniciarAhorcado()">Empezar</button>
+        <button onclick="location.href='../backend/paginaRankingPalabras.php'">
+          Ver Ranking
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal final -->
+    <div id="modal-final" style="display: none">
+      <div id="modal-final-contenido">
+        <h2>Fin del juego</h2>
+        <p id="resultado"></p>
+        <button onclick="reiniciarCompleto()">Volver a jugar</button>
+        <button onclick="window.location.href='../index.html'">Salir</button>
+        <form
+          method="POST"
+          action="../backend/rankingPalabras.php"
+          style="margin-top: 10px"
+        >
+          <input type="hidden" id="usuarioFinal" name="usuario" />
+          <input type="hidden" id="puntosFinal" name="puntos" />
+          <button type="submit">Registrar récord</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="contenedor-juego">
+      <div class="imagen-ahorcado">
+        <img
+          id="imagenAhorcado"
+          src="../assets/img/imagenes/ahorcado0.jpg"
+          alt="Ahorcado"
+        />
+      </div>
+
+      <div>
+        <div class="palabra" id="palabra"></div>
+        <div class="letras" id="letras"></div>
+      </div>
+    </div>
+
+    <div class="boton-volver-ahorcado">
+      <button onclick="window.location.href='../index.html'">Salir</button>
+    </div>
+
+    <script src="../assets/js/juegos.js"></script>
+
+    <script src="../assets/js/palabras.js"></script>
+  </body>
+</html>

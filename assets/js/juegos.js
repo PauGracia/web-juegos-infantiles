@@ -679,3 +679,146 @@ function siguiente() {
     location.reload(); // Reiniciar juego al terminar
   }
 }
+
+/* =========================
+   JUEGO AHORCADO (namespaced)
+   ========================= */
+(function () {
+  // Solo continuar si estamos en la página del ahorcado (comprobación por un elemento único)
+  const palabraEl = document.getElementById("palabra");
+  const letrasEl = document.getElementById("letras");
+  const imagenAhorcado = document.getElementById("imagenAhorcado");
+  // Ajusta este id en el HTML si quieres: por defecto uso "marcador" si existe,
+  // si prefieres "marcador-ahorcado" añade ese id al HTML.
+  const marcadorEl =
+    document.getElementById("marcador-ahorcado") ||
+    document.getElementById("marcador") ||
+    null;
+
+  // Si no existen los elementos principales, no ejecutamos nada para evitar errores
+  if (!palabraEl || !letrasEl || !imagenAhorcado) {
+    // No es la página del ahorcado: salir sin romper el resto del JS
+    return;
+  }
+
+  // Estado privado del módulo
+  let ah_palabraSecreta;
+  let ah_progreso;
+  let ah_errores = 0;
+  const ah_maxErrores = 6;
+  let ah_usuario = "";
+  let ah_puntos = 0;
+
+  // Iniciar juego (usa este nombre para no colisionar)
+  window.iniciarAhorcado = function () {
+    const inputUsuario = document.getElementById("usuario");
+    if (!inputUsuario) {
+      alert("No se encontró el campo usuario.");
+      return;
+    }
+    ah_usuario = inputUsuario.value.trim();
+    if (!ah_usuario) {
+      alert("Por favor ingresa un nombre de usuario");
+      return;
+    }
+    const modalInicio = document.getElementById("modal-inicio");
+    if (modalInicio) modalInicio.style.display = "none";
+    ah_puntos = 0;
+    ah_actualizarMarcador();
+    ah_nuevaPalabra();
+  };
+
+  function ah_nuevaPalabra() {
+    // 'palabras' debe venir de tu archivo palabras.js (array de strings)
+    ah_palabraSecreta =
+      palabras[Math.floor(Math.random() * palabras.length)].toUpperCase();
+    ah_progreso = Array(ah_palabraSecreta.length).fill("_");
+    ah_errores = 0;
+    imagenAhorcado.src = `../assets/img/imagenes/ahorcado${ah_errores}.jpg`;
+    letrasEl.innerHTML = "";
+    ah_mostrarPalabra();
+    ah_crearBotones();
+  }
+
+  function ah_mostrarPalabra() {
+    // join con espacios, usar innerHTML para permitir spans después de perder
+    palabraEl.innerHTML = ah_progreso.join(" ");
+  }
+
+  function ah_crearBotones() {
+    const abecedario = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ".split("");
+    abecedario.forEach((letra) => {
+      const btn = document.createElement("button");
+      btn.textContent = letra;
+      btn.type = "button";
+      btn.addEventListener("click", () => ah_manejarLetra(btn, letra));
+      letrasEl.appendChild(btn);
+    });
+  }
+
+  function ah_manejarLetra(btn, letra) {
+    btn.disabled = true;
+    if (ah_palabraSecreta.includes(letra)) {
+      btn.style.background = "green";
+      for (let i = 0; i < ah_palabraSecreta.length; i++) {
+        if (ah_palabraSecreta[i] === letra) ah_progreso[i] = letra;
+      }
+      ah_mostrarPalabra();
+      if (!ah_progreso.includes("_")) {
+        ah_puntos++;
+        ah_actualizarMarcador();
+        setTimeout(() => ah_nuevaPalabra(), 700);
+      }
+    } else {
+      btn.style.background = "red";
+      ah_errores++;
+      ah_actualizarAhorcado();
+    }
+  }
+
+  function ah_actualizarAhorcado() {
+    imagenAhorcado.src = `../assets/img/imagenes/ahorcado${ah_errores}.jpg`;
+    if (ah_errores >= ah_maxErrores) {
+      // Revelar palabra con las no adivinadas en rojo
+      ah_revelarPalabra();
+      // Mostrar modal final tras un pequeño retardo
+      setTimeout(() => ah_mostrarFinal(), 1200);
+    }
+  }
+
+  function ah_revelarPalabra() {
+    let palabraMostrada = "";
+    for (let i = 0; i < ah_palabraSecreta.length; i++) {
+      if (ah_progreso[i] === "_") {
+        palabraMostrada += `<span class="ah-letra-no">${ah_palabraSecreta[i]}</span> `;
+      } else {
+        palabraMostrada += `<span class="ah-letra-si">${ah_progreso[i]}</span> `;
+      }
+    }
+    palabraEl.innerHTML = palabraMostrada.trim();
+  }
+
+  function ah_actualizarMarcador() {
+    if (!marcadorEl) return; // si no hay marcador, evitamos errores
+    marcadorEl.textContent = ah_puntos;
+  }
+
+  function ah_mostrarFinal() {
+    const modalFinal = document.getElementById("modal-final");
+    if (modalFinal) modalFinal.style.display = "flex";
+    const resultado = document.getElementById("resultado");
+    if (resultado)
+      resultado.textContent = ah_usuario + ", tu puntuación fue: " + ah_puntos;
+    const uFinal = document.getElementById("usuarioFinal");
+    const pFinal = document.getElementById("puntosFinal");
+    if (uFinal) uFinal.value = ah_usuario;
+    if (pFinal) pFinal.value = ah_puntos;
+  }
+
+  window.ah_reiniciarCompleto = function () {
+    const modalFinal = document.getElementById("modal-final");
+    if (modalFinal) modalFinal.style.display = "none";
+    const modalInicio = document.getElementById("modal-inicio");
+    if (modalInicio) modalInicio.style.display = "flex";
+  };
+})();

@@ -1,14 +1,17 @@
 <?php
+$archivo = __DIR__ . "/data/rankingPalabras.txt";
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $usuario = trim($_POST["usuario"]);
-    $puntos = intval($_POST["puntos"]);
+    $usuario = trim($_POST["usuario"] ?? "");
+    $puntos = intval($_POST["puntos"] ?? 0);
+    $fecha = date("Y-m-d H:i:s");
 
-    if (!empty($usuario)) {
-        $linea = date("Y-m-d H:i:s") . " | " . $usuario . " | " . $puntos . PHP_EOL;
-        file_put_contents(__DIR__ . "/data/rankingPalabras.txt", $linea, FILE_APPEND);
+    if ($usuario !== "") {
+        $linea = "$usuario|$puntos|$fecha" . PHP_EOL;
+        file_put_contents($archivo, $linea, FILE_APPEND);
     }
-
-     header("Location: paginaRankingPalabras.php");
-    exit;
 }
+
+header("Location: paginaRankingPalabras.php");
+exit;
 ?>

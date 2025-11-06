@@ -23,48 +23,11 @@ if (file_exists($archivo)) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Ranking - El Corredor</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f2f2f2;
-            padding: 30px;
-            text-align: center;
-        }
-        h1 {
-            margin-bottom: 20px;
-        }
-        #tabla-rankingPalabras {
-            margin: auto;
-            border-collapse: collapse;
-            width: 80%;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-            margin-bottom: 50px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-        }
-        th {
-            background: #333;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background: #f9f9f9;
-        }
-        .boton-rankingPalabras {
-            margin-top: 50px;
-            padding: 10px 20px;
-            background: #28a745;
-            color: white;
-            border-radius: 6px;
-            text-decoration: none;
-        }
-    </style>
+    <title>Ranking - El Ahorcado</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
-<body>
-    <h1>🏆 Ranking de Palabras</h1>
+<body class="body-rankingPalabras">
+    <h1 class="titulo-rankingPalabras">🏆 Ranking de Palabras</h1>
 
     <?php if (!empty($ranking)): ?>
     <table id="tabla-rankingPalabras">
@@ -76,7 +39,7 @@ if (file_exists($archivo)) {
         </tr>
         <?php foreach ($ranking as $i => $r): ?>
         <tr>
-            <td><?= $i+1 ?></td>
+            <td><?= $i + 1 ?></td>
             <td><?= htmlspecialchars($r["usuario"]) ?></td>
             <td><?= $r["puntos"] ?></td>
             <td><?= $r["fecha"] ?></td>
@@ -84,9 +47,11 @@ if (file_exists($archivo)) {
         <?php endforeach; ?>
     </table>
     <?php else: ?>
-        <p>No hay registros aún.</p>
+        <p class="mensaje-sin-registros">No hay registros aún.</p>
     <?php endif; ?>
 
-    <a href="../juegos/partido.html" class="boton-rankingPalabras">Volver al Juego</a>
+    <div class="boton-volver-rankingPalabras">
+        <a href="../juegos/juegoAhorcado.html" class="boton-rankingPalabras">Volver al Juego</a>
+    </div>
 </body>
 </html>
