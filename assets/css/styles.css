@@ -828,6 +828,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 25px;
   z-index: 10;
 }
 
@@ -836,13 +837,19 @@ body {
   color: white;
   padding: 5px;
   border-radius: 5px;
+  width: 70px;
+  font-size: 20px;
 }
 
 .modal-palabras button:hover {
   background-color: #000;
-  color: gainsboro;
-  padding: 5px;
-  border-radius: 5px;
+  color: gray;
+}
+
+.modal-palabras button:active {
+  background-color: #5e5b5b00;
+  color: gray;
+  transform: scale(0.97);
 }
 
 .modal-contentPalabras {
@@ -852,18 +859,28 @@ body {
   text-align: center;
 }
 
+.modal-contentPalabras label,
+.modal-contentPalabras input,
+.modal-contentPalabras select {
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 5px 10px;
+  height: 30px;
+  box-sizing: border-box; /* Para que el padding no aumente el ancho */
+  vertical-align: middle;
+}
+
 .contenedor-imagenPalabra {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-
   color: white;
 }
 
 .imagen-contenedor {
-  border: 20px solid blue;
+  border: 20px solid gray;
   border-radius: 20px;
   padding: 50px;
   display: inline-block;
@@ -900,7 +917,7 @@ body {
   color: white;
   padding: 10px 20px;
   margin: 0 10px;
-  font-size: 16px;
+  font-size: 20px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -923,7 +940,7 @@ body {
   color: red;
   padding: 10px 20px;
   margin: 0 10px;
-  font-size: 16px;
+  font-size: 20px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -933,7 +950,7 @@ body {
 /* Media tablets juego palabras */
 @media (max-width: 768px) {
   .imagen-contenedor {
-    border: 18px solid blue;
+    border: 18px solid black;
 
     padding: 45px;
 

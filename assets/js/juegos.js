@@ -574,7 +574,7 @@ function mostrarImagen() {
   document.getElementById("imagen").src = objetoActual.imagen;
 
   const contenedor = document.querySelector(".imagen-contenedor");
-  contenedor.style.borderColor = "blue"; // Color inicial
+  contenedor.style.borderColor = "black"; // Color inicial
 
   const inputsDiv = document.getElementById("inputs");
   inputsDiv.innerHTML = ""; // Limpiar inputs anteriores
